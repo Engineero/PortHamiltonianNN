@@ -17,7 +17,7 @@ class MLP(nn.Module):
         x = x.view(x.size(0), -1)
         for l in self.dense_layers:
             l_x = l(x)
-            x = F.softplus(l_x, beta=10,threshold=20)
+            x = F.softplus(l_x, beta=10, threshold=20)
         if not self.softmax: return l_x
         else: return F.log_softmax(l_x, dim=-1)
 
